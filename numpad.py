@@ -1,6 +1,5 @@
 import sys
 import tkinter
-from tkinter import ttk
 import value as g
 
 def numpad():
@@ -25,7 +24,6 @@ def numpad():
     entry = tkinter.Entry(master=frame_bottom, textvariable=phone_num, font=(None,24))
     label = tkinter.Label(master=frame_bottom, textvariable=phone_num, font=("Helvetica",36), fg="blue")
     button = tkinter.Button(frame_bottom, text="Call", fg="#66FF66", relief="raised", font=("Helvetica", 20))
-    button = ttk.Button(root, text="Call", style="Call")
     button2 = tkinter.Button(frame_bottom, text="Hang up", bg="blue", relief="raised", font=("Helvetica", 20))
     entry.grid(row=0, column=0, columnspan=3, sticky="ew", padx=10, pady=3)
     label.grid(row=1, column=0, columnspan=3, sticky="ew", padx=10, pady=3)
