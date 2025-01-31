@@ -1,5 +1,4 @@
 import tkinter
-import tkmacosx
 import value as g
 
 def numpad():
