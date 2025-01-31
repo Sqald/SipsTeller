@@ -1,6 +1,7 @@
 import os
 import re
 import configparser
+import config
 
 
 def first_open_conf(window_width, window_height):
@@ -26,6 +27,8 @@ def first_open_conf(window_width, window_height):
         if not os.path.exists(config_dir):
             os.makedirs(config_dir)  # フォルダを作成
         
+        config.setup()
+
         # テンプレートの内容を定義
         template_content = f"""# SipsTeller config
 [global]
@@ -36,6 +39,9 @@ width_main = {int(window_width/5)}
 height_main = {int(window_height*2/3)}
 width_num = {int(window_width/5)}
 height_num = {int(window_height*2/3)}
+
+[admin]
+password = {str(config.passwd)}
     """
 
         # テンプレートを `config.txt` として作成
