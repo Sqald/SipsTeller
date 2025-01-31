@@ -1,5 +1,5 @@
-import sys
 import tkinter
+import tkmacosx
 import value as g
 
 def numpad():
@@ -22,9 +22,9 @@ def numpad():
     buttons = []
     phone_num = tkinter.StringVar()
     entry = tkinter.Entry(master=frame_bottom, textvariable=phone_num, font=(None,24))
-    label = tkinter.Label(master=frame_bottom, textvariable=phone_num, font=("Helvetica",36), fg="blue")
-    button = tkinter.Button(frame_bottom, text="Call", fg="#66FF66", relief="raised", font=("Helvetica", 20))
-    button2 = tkinter.Button(frame_bottom, text="Hang up", bg="blue", relief="raised", font=("Helvetica", 20))
+    label = tkinter.Label(master=frame_bottom, textvariable=phone_num, font=("Helvetica",36))
+    button = tkinter.Button(frame_bottom, text="Call", highlightbackground="#66FF66", bg="#66FF66", fg="#000", relief="raised", font=("Helvetica", 20))
+    button2 = tkinter.Button(frame_bottom, text="Hang up", highlightbackground="#FF3300", bg="#FF3300", fg="#000", relief="raised", font=("Helvetica", 20))
     entry.grid(row=0, column=0, columnspan=3, sticky="ew", padx=10, pady=3)
     label.grid(row=1, column=0, columnspan=3, sticky="ew", padx=10, pady=3)
     button.grid(row=2, column=0, sticky="nsew", padx=5, pady=5)
@@ -44,7 +44,7 @@ def numpad():
             add_num(key)
 
     for text in button_texts:
-        button = tkinter.Button(frame_bottom, text=text, bg="lime", relief="raised", font=("Helvetica", 20),command=lambda t=text:add_num(t))
+        button = tkinter.Button(frame_bottom, text=text, relief="raised", font=("Helvetica", 20),command=lambda t=text:add_num(t))
         buttons.append(button)  
 
     for index, button in enumerate(buttons):

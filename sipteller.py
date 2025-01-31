@@ -1,9 +1,8 @@
 import sys
-import tkinter
+import tkinter as tk
 import numpad
+import config
 import value as g
-
-tk = tkinter
 
 root = tk.Tk()
 g.first_open_conf(root.winfo_screenwidth(), root.winfo_screenheight())
@@ -12,7 +11,9 @@ g.height_main=int(g.height_main)
 root.title(u"SIPTELLER")
 root.geometry(f"{g.width_main}x{g.height_main}")
 root.tk_setPalette(background=f"{g.bgcolor}")
-button = tk.Button(root, text="Press me", command=numpad.numpad)
-button.pack()
+button = tk.Button(root, text="Numpad", command=numpad.numpad)
+button2 = tk.Button(root, text="Config", command=config.config)
+button.grid(row=0, column=0,sticky="nw")
+button2.grid(row=2, column=2,sticky="s")
 
 root.mainloop()
