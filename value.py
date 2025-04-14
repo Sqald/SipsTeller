@@ -71,7 +71,7 @@ def read_conf():
                     # 動的にグローバル変数を作成
                     globals()[var_name] = var_value
 
-def on_close(root, width_r, height_r): 
+def on_close_num(root, width_r, height_r): 
     user_folder = os.path.expanduser("~")
     folder = os.path.join(user_folder, "Documents")
     config_dir = os.path.join(folder, "sipteller")
@@ -80,6 +80,25 @@ def on_close(root, width_r, height_r):
     config.read(config_path, encoding="utf-8")
     config["config"]["width_num"] = str(width_r)
     config["config"]["height_num"] = str(height_r)
+    global width_num,height_num
+    width_num = width_r
+    height_num = height_r
+    with open(config_path, "w", encoding="utf-8") as file:
+        config.write(file)
+    root.destroy()
+
+def on_close(root, width_r, height_r): 
+    user_folder = os.path.expanduser("~")
+    folder = os.path.join(user_folder, "Documents")
+    config_dir = os.path.join(folder, "sipteller")
+    config_path = os.path.join(config_dir, "config.txt")
+    config = configparser.ConfigParser()
+    config.read(config_path, encoding="utf-8")
+    config["config"]["width_main"] = str(width_r)
+    config["config"]["height_main"] = str(height_r)
+    global width_main,height_main
+    width_main = width_r
+    height_main = height_r
     with open(config_path, "w", encoding="utf-8") as file:
         config.write(file)
     root.destroy()
