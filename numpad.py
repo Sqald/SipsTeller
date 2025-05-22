@@ -6,6 +6,10 @@ import time
 import pyaudio
 import wave
 
+
+def is_numeric(new_value):
+    return new_value.isdigit() or new_value == ""
+
 def numpad():
     root = tkinter.Tk()
     root.title(u"numpad")
@@ -23,21 +27,19 @@ def numpad():
     root.grid_rowconfigure(1, weight=1)  
     root.grid_columnconfigure(0, weight=1)
 
+    vcmd = (root.register(is_numeric), '%P')
+
     buttons = []
     phone_num = tkinter.StringVar()
-    entry = tkinter.Entry(master=frame_bottom, textvariable=phone_num, font=(None,24))
+    entry = tkinter.Entry(master=frame_bottom, textvariable=phone_num, font=(None,24), validate='key', validatecommand=vcmd)
     label = tkinter.Label(master=frame_bottom, textvariable=phone_num, font=("Helvetica",36))
-    button = tkinter.Button(frame_bottom, text="Call", highlightbackground="#66FF66", bg="#66FF66", fg="#000", relief="raised", font=("Helvetica", 20), command=lambda: send_to())
+    button = tkinter.Button(frame_bottom, text="Call", highlightbackground="#66FF66", bg="#66FF66", fg="#000", relief="raised", font=("Helvetica", 20), command=lambda: g.send_command("/" + label.cget("text")))
     button2 = tkinter.Button(frame_bottom, text="Hang up", highlightbackground="#FF3300", bg="#FF3300", fg="#000", relief="raised", font=("Helvetica", 20))
     entry.grid(row=0, column=0, columnspan=3, sticky="ew", padx=10, pady=3)
     label.grid(row=1, column=0, columnspan=3, sticky="ew", padx=10, pady=3)
     button.grid(row=2, column=0, sticky="nsew", padx=5, pady=5)
     button2.grid(row=2, column=2, sticky="nsew", padx=5, pady=5)
     button_texts = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "＊", "0", "#"]
-
-    def send_to():
-        print("Callボタンが押されました")
-        g.send_command(f"{entry.get()}")
 
     def add_num(t):
         label_text = label.cget("text")
