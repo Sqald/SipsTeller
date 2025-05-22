@@ -2,6 +2,7 @@ import hashlib
 import tkinter
 import value as g
 
+<<<<<<< Updated upstream
 def pass_check():
     root = tkinter.Tk()
     root.title(u"Password Check")
@@ -9,8 +10,11 @@ def pass_check():
     g.read_conf()
     root.geometry(f"{int(root.winfo_screenwidth()/10)}x{int(root.winfo_screenheight()*2/15)}")
     root.mainloop()
+=======
+passwd = None
+>>>>>>> Stashed changes
 
-def config():
+def open_config_window():
     root = tkinter.Tk()
     root.title(u"Config")
     root.minsize(width=int(root.winfo_screenwidth()/5), height=int(root.winfo_screenheight()*2/3))

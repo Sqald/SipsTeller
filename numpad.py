@@ -22,13 +22,17 @@ def numpad():
     phone_num = tkinter.StringVar()
     entry = tkinter.Entry(master=frame_bottom, textvariable=phone_num, font=(None,24))
     label = tkinter.Label(master=frame_bottom, textvariable=phone_num, font=("Helvetica",36))
-    button = tkinter.Button(frame_bottom, text="Call", highlightbackground="#66FF66", bg="#66FF66", fg="#000", relief="raised", font=("Helvetica", 20))
+    button = tkinter.Button(frame_bottom, text="Call", highlightbackground="#66FF66", bg="#66FF66", fg="#000", relief="raised", font=("Helvetica", 20), command=lambda: send_to())
     button2 = tkinter.Button(frame_bottom, text="Hang up", highlightbackground="#FF3300", bg="#FF3300", fg="#000", relief="raised", font=("Helvetica", 20))
     entry.grid(row=0, column=0, columnspan=3, sticky="ew", padx=10, pady=3)
     label.grid(row=1, column=0, columnspan=3, sticky="ew", padx=10, pady=3)
     button.grid(row=2, column=0, sticky="nsew", padx=5, pady=5)
     button2.grid(row=2, column=2, sticky="nsew", padx=5, pady=5)
     button_texts = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "#", "0", "＊"]
+
+    def send_to():
+        print("Callボタンが押されました")
+        g.send_command(f"{entry.get()}")
 
     def add_num(t):
         label_text = label.cget("text")
@@ -54,8 +58,14 @@ def numpad():
     for row in range(4): 
         frame_bottom.grid_rowconfigure(row + 3, weight=1)
     for col in range(3): 
+<<<<<<< Updated upstream
         frame_bottom.grid_columnconfigure(col, weight=1, uniform="group1")
     root.bind("<Key>", on_key_press) 
     root.protocol("WM_DELETE_WINDOW", lambda:g.on_close(root, root.winfo_width(), root.winfo_height())) 
+=======
+        frame_bottom.grid_columnconfigure(col, weight=1, uniform="group1") 
+        
+    root.protocol("WM_DELETE_WINDOW", lambda:g.on_close_num(root, root.winfo_width(), root.winfo_height())) 
+>>>>>>> Stashed changes
 
     root.mainloop()
