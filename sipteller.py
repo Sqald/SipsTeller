@@ -6,6 +6,7 @@ import value as g
 
 root = tk.Tk()
 g.first_open_conf(root.winfo_screenwidth(), root.winfo_screenheight())
+root.minsize(width=int(root.winfo_screenwidth()/5), height=int(root.winfo_screenheight()*2/3))
 g.width_main=int(g.width_main)
 g.height_main=int(g.height_main)
 root.title(u"SIPTELLER")
@@ -16,9 +17,6 @@ button2 = tk.Button(root, text="Config", command=config.open_config_window)
 button.grid(row=0, column=0,sticky="nw")
 button2.grid(row=2, column=2,sticky="s")
 
-<<<<<<< Updated upstream
-=======
 root.protocol("WM_DELETE_WINDOW", lambda:g.on_close_main(root, root.winfo_width(), root.winfo_height())) 
 
->>>>>>> Stashed changes
 root.mainloop()

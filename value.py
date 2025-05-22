@@ -96,9 +96,6 @@ def read_conf():
                     # 動的にグローバル変数を作成
                     globals()[var_name] = var_value
 
-<<<<<<< Updated upstream
-def on_close(root, width_r, height_r): 
-=======
 def get_baresip_executable():
     from sys import platform
     base = os.path.join(os.path.dirname(__file__), "bin")
@@ -138,7 +135,6 @@ def send_command(command):
 proc = run_baresip()
 
 def on_close_num(root, width_r, height_r): 
->>>>>>> Stashed changes
     user_folder = os.path.expanduser("~")
     folder = os.path.join(user_folder, "Documents")
     config_dir = os.path.join(folder, "sipteller")
@@ -147,8 +143,6 @@ def on_close_num(root, width_r, height_r):
     config.read(config_path, encoding="utf-8")
     config["config"]["width_num"] = str(width_r)
     config["config"]["height_num"] = str(height_r)
-<<<<<<< Updated upstream
-=======
     global width_num,height_num
     width_num = width_r
     height_num = height_r
@@ -168,7 +162,6 @@ def on_close_main(root, width_r, height_r):
     global width_main,height_main
     width_main = width_r
     height_main = height_r
->>>>>>> Stashed changes
     with open(config_path, "w", encoding="utf-8") as file:
         config.write(file)
     send_command("/quit")
