@@ -13,6 +13,10 @@ parser = argparse.ArgumentParser(description="フォルダ指定 (フルパス)"
 parser.add_argument("-f", "--folder", type=str, default=None, help="フォルダ指定用のパス")
 args = parser.parse_args()
 
+global user_folder
+global folder
+global config_dir
+
 if args.folder:
     if os.path.isdir(args.folder):
         print(f"指定されたフォルダ: {args.folder}")
@@ -135,9 +139,6 @@ def send_command(command):
 proc = run_baresip()
 
 def on_close_num(root, width_r, height_r): 
-    user_folder = os.path.expanduser("~")
-    folder = os.path.join(user_folder, "Documents")
-    config_dir = os.path.join(folder, "sipteller")
     config_path = os.path.join(config_dir, "config.txt")
     config = configparser.ConfigParser()
     config.read(config_path, encoding="utf-8")
@@ -151,9 +152,6 @@ def on_close_num(root, width_r, height_r):
     root.destroy()
 
 def on_close_main(root, width_r, height_r): 
-    user_folder = os.path.expanduser("~")
-    folder = os.path.join(user_folder, "Documents")
-    config_dir = os.path.join(folder, "sipteller")
     config_path = os.path.join(config_dir, "config.txt")
     config = configparser.ConfigParser()
     config.read(config_path, encoding="utf-8")
