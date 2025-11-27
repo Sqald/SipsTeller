@@ -61,6 +61,20 @@ button2.grid(row=0, column=2, sticky="nsew", padx=5, pady=5)
 button = tk.Button(top_frame_right, text="Numpad", command=numpad.numpad)
 button.grid(row=0, column=0, sticky="nsew", padx=5, pady=5)
 
+# Textウィジェットを作成
+text = tk.Text(bottom_frame_up, width=40, height=10)
+text.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+
+# スクロールバーを作成
+scrollbar = tk.Scrollbar(bottom_frame_up, command=text.yview)
+scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+
+# Textウィジェットにスクロールバーを連携
+text.config(yscrollcommand=scrollbar.set)
+
+# たくさんのテキストを挿入してみる
+for i in range(50):
+    text.insert(tk.END, f"Line {i+1}\n")
 
 # 閉じる処理
 root.protocol("WM_DELETE_WINDOW", lambda: g.on_close_main(root, root.winfo_width(), root.winfo_height()))
